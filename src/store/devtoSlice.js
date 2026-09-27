@@ -23,9 +23,6 @@ export const devtoSlice = createSlice({
         failedToLoad: false,
         isLoading: false,
     },
-    // reducers: {
-
-    // },
     extraReducers: (builder) => {
         builder
         .addCase(loadPostList.pending, (state) => {
