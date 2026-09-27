@@ -9,15 +9,15 @@ return cachedPosts;
 }
 }
 
-export const loadPostList = createAsyncThunk('reddit/loadPostList', async(path) => {
-    const url = `/reddit${path}`;
+export const loadPostList = createAsyncThunk('devto/loadPostList', async(path) => {
+    const url = `https://dev.to/api${path}`;
     const body = await fetch(url);
     const response = await body.json();
     return response;
 })
 
-export const redditSlice = createSlice({
-    name: "reddit",
+export const devtoSlice = createSlice({
+    name: "devto",
     initialState: {
         posts: postList(),
         failedToLoad: false,
@@ -35,8 +35,8 @@ export const redditSlice = createSlice({
         .addCase(loadPostList.fulfilled, (state, action) => {
             state.failedToLoad = false;
             state.isLoading = false;
-            state.posts = action.payload.data.children;
-            sessionStorage.setItem('cachedPosts', JSON.stringify(action.payload.data.children));
+            state.posts = action.payload;
+            sessionStorage.setItem('cachedPosts', JSON.stringify(action.payload.data));
         })
         .addCase(loadPostList.rejected, (state) => {
             state.failedToLoad = true;
@@ -45,7 +45,7 @@ export const redditSlice = createSlice({
     }
 })
 
-export const selectPostList = (state) => state.reddit.posts;
-export const failedToLoad = (state) => state.reddit.failedToLoad;
-export const isLoading = (state) => state.reddit.isLoading;
-export default redditSlice.reducer;
+export const selectPostList = (state) => state.devto.posts;
+export const failedToLoad = (state) => state.devto.failedToLoad;
+export const isLoading = (state) => state.devto.isLoading;
+export default devtoSlice.reducer;

@@ -1,8 +1,8 @@
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
-import redditSlice from './redditSlice';
+import devtoSlice from './devtoSlice';
 
 export default configureStore({
     reducer: combineReducers({
-        reddit: redditSlice,
+        devto: devtoSlice,
     }),
 });
