@@ -16,11 +16,13 @@ export const savedTagsSlice = createSlice({
     },
     reducers: {
         saveTag: (state, action) => {
+            if (!state.tags.includes(action.payload)) {
             state.tags =  [
                 ...state.tags,
                 action.payload
             ]
              localStorage.setItem('cachedTags', JSON.stringify(state.tags));
+            }
         },
         removeTag: (state, action) => {
             state.tags = state.tags.filter((tag) => {
