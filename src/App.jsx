@@ -4,7 +4,7 @@ import {loadPostList, selectPostList} from './store/devtoSlice';
 import { selectTagList } from './store/savedTagsSlice';
 import PostFeed from './features/postFeed/PostFeed';
 import Header from './components/Header/Header';
-import SavedTags from './features/savedTags/savedTags';
+import SavedTags from './features/savedTags/SavedTags';
 
 function App() {
   const dispatch = useDispatch();
