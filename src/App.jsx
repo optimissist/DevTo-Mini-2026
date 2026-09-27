@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {loadPostList, selectPostList} from './store/redditSlice';
+import {loadPostList, selectPostList} from './store/devtoSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     if (postList.length === 0) {
-      dispatch(loadPostList('/r/all.json'));
+      dispatch(loadPostList('/articles'));
     }
   }, [dispatch, postList])
 
@@ -17,8 +17,12 @@ function App() {
       <ul>
       {postList.map((post) => {
         return (
-          <li key={post.data.id}>
-            {post.data["title"]}
+          <li key={post.id}>
+            <a href={post.url} target="_blank"  rel="noopener noreferrer">
+            <p>{post.title}: {post.description}</p>
+            <p>{post.readable_publish_date}, {post.user.username}</p>
+            <p>{post.tags}</p>
+            </a>
           </li>
         )
         })}
