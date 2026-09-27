@@ -10,7 +10,7 @@ return cachedPosts;
 }
 
 export const loadPostList = createAsyncThunk('reddit/loadPostList', async(path) => {
-    const url = `https://www.reddit.com${path}`;
+    const url = `/reddit${path}`;
     const body = await fetch(url);
     const response = await body.json();
     return response;
@@ -45,7 +45,7 @@ export const redditSlice = createSlice({
     }
 })
 
-export const selectPostList = (state) => state.reddit.postList;
+export const selectPostList = (state) => state.reddit.posts;
 export const failedToLoad = (state) => state.reddit.failedToLoad;
 export const isLoading = (state) => state.reddit.isLoading;
 export default redditSlice.reducer;
