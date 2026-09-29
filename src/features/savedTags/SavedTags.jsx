@@ -1,3 +1,4 @@
+import "./SavedTags.css";
 import {useDispatch} from 'react-redux';
 import { loadPostList } from '../../store/devtoSlice';
 import { removeTag } from '../../store/savedTagsSlice';
@@ -14,6 +15,8 @@ function setTagToRemove(tag) {
 }
   
  return (
+  <div className="sidebar">
+    <h3>Saved Tags</h3>
          <ul>
       {tagList.map((tag) => {
         return (
@@ -34,6 +37,7 @@ function setTagToRemove(tag) {
         )
         })}
       </ul>
+      </div>
     )
 }
 

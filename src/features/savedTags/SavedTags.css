@@ -1,0 +1,27 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    height: auto;
+    background: var(--color-foreground);
+    box-shadow: var(--box-shadow);
+    margin-bottom: var(--spacing-4);
+    border-radius: var(--radius);
+    padding: var(--spacing-3);
+    transition: box-shadow 0.1s ease-in;
+    color: var(--color-text-secondary);
+    margin: 2.25rem;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    text-align: center;
+}

@@ -32,9 +32,10 @@ function Header() {
 
 
 return (
-    <header>
-        <div className='logo'>
+    <header className="header">
+        <div className='headerlogo'>
             <img src={headerImage} alt="A square app icon with rounded corners and a thin coral pink border framing a solid black background. In the center, large bold white capitals read 'DEV'. Below that, a pale yellow rectangular highlight block holds black lowercase text reading 'unofficial'." />
+            <h4>Dev.To Mini<br/><a href="https://www.dev.to" target="_blank">No Frills Dev.To</a></h4>
         </div>
         <form className="search" onSubmit={handleSubmit}>
             <input 
