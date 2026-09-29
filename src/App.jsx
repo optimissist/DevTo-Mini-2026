@@ -5,6 +5,7 @@ import { selectTagList } from './store/savedTagsSlice';
 import PostFeed from './features/postFeed/PostFeed';
 import Header from './components/Header/Header';
 import SavedTags from './features/savedTags/SavedTags';
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,10 +24,12 @@ function App() {
   return (
     <div>
       <Header />
+       <div className="body">
       {selectIsLoading && <p>Is Loading...</p>}
       {didFailToLoad && <p>This Failed To Load</p>}
       {!selectIsLoading && !didFailToLoad && <PostFeed postList={postList} />}
       <SavedTags tagList={tagList} />
+      </div>
     </div>
   )
 }

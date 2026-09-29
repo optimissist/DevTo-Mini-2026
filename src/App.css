@@ -7,7 +7,7 @@
   --color-text-body: #6f6f6f;
   --color-text-secondary: #717171;
   --color-text-invert: #ffffff;
-  --color-text-link: #4ec3f5;
+  --color-text-link: #5a73f3;
   --color-branding: #3d5af1;
   --color-branding-transparent: #3d5af140;
 
@@ -39,4 +39,17 @@ body {
 
 p {
   margin: 0;
+}
+
+.body {
+display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+  text-decoration: none;
 }
