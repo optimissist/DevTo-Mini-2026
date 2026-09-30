@@ -10,6 +10,9 @@ return cachedPosts;
 }
 
 export const loadPostList = createAsyncThunk('devto/loadPostList', async(path) => {
+    if (path == "/articles" && postList().length > 0) {
+        return postList();
+    }
     const url = `https://dev.to/api${path}`;
     const body = await fetch(url);
     const response = await body.json();
@@ -33,7 +36,8 @@ export const devtoSlice = createSlice({
             state.failedToLoad = false;
             state.isLoading = false;
             state.posts = action.payload;
-            sessionStorage.setItem('cachedPosts', JSON.stringify(action.payload.data));
+            if (action.meta.arg === "/articles") {sessionStorage.setItem('cachedPosts', JSON.stringify(action.payload));}
+            console.log(action)
         })
         .addCase(loadPostList.rejected, (state) => {
             state.failedToLoad = true;

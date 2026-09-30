@@ -1,19 +1,50 @@
-import {useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {loadPostList, selectPostList, isLoading, failedToLoad} from './store/devtoSlice';
-import { selectTagList } from './store/savedTagsSlice';
+import { saveTag, removeTag, selectTagList } from './store/savedTagsSlice';
 import PostFeed from './features/postFeed/PostFeed';
 import Header from './components/Header/Header';
 import SavedTags from './features/savedTags/SavedTags';
 import "./App.css";
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
   const postList = useSelector(selectPostList);
   const tagList = useSelector(selectTagList);
   const selectIsLoading = useSelector(isLoading);
   const didFailToLoad = useSelector(failedToLoad);
+  const isSavedTag = tagList.includes(searchTerm);
   
+      function searchTermChange(e) {
+          setSearchTerm(e.target.value);
+      }
+  
+      function setSaveTag() {
+          if (isSavedTag) {
+              dispatch(removeTag(searchTerm));
+          } else {
+          dispatch(saveTag(searchTerm));
+          }
+      }
+  
+            function handleSubmit(e) {
+          e.preventDefault();
+          dispatch(loadPostList(`/articles/?tag=${searchTerm}`))
+      }
+
+      function setSavedTags(tag) {
+  dispatch(loadPostList(`/articles/?tag=${tag}`));
+}
+
+function setTagToRemove(tag) {
+  dispatch(removeTag(tag));
+}
+  
+function sendHome() {
+  dispatch(loadPostList('/articles'))
+  setSearchTerm("");
+}
 
   useEffect(() => {
     if (postList.length === 0) {
@@ -23,12 +54,12 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header searchTermChange={searchTermChange} setSaveTag={setSaveTag} handleSubmit={handleSubmit} searchTerm={searchTerm} isSavedTag={isSavedTag}/>
        <div className="body">
       {selectIsLoading && <p className="isLoading">Is Loading...</p>}
       {didFailToLoad && <p className="didFailToLoad">This Failed To Load</p>}
       {!selectIsLoading && !didFailToLoad && <PostFeed postList={postList} />}
-      <SavedTags tagList={tagList} />
+      <SavedTags tagList={tagList} setSavedTags={setSavedTags} setTagToRemove={setTagToRemove} sendHome={sendHome}/>
       </div>
     </>
   )

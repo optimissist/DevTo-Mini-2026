@@ -1,21 +1,12 @@
 import "./SavedTags.css";
-import {useDispatch} from 'react-redux';
-import { loadPostList } from '../../store/devtoSlice';
-import { removeTag } from '../../store/savedTagsSlice';
 
-function SavedTags({tagList}) {
-  const dispatch = useDispatch();
+function SavedTags({tagList, setSavedTags, setTagToRemove, sendHome}) {
 
-function setSavedTags(tag) {
-  dispatch(loadPostList(`/articles/?tag=${tag}`));
-}
-
-function setTagToRemove(tag) {
-  dispatch(removeTag(tag));
-}
-  
  return (
   <div className="sidebar">
+    <button type="button" className="home"
+    onClick={sendHome}
+    >Home</button>
     <h3>Saved Tags</h3>
          <ul>
       {tagList.map((tag) => {

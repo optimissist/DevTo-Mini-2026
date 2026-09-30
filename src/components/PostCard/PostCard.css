@@ -19,3 +19,8 @@
 .userName {
     padding-top: 1rem;
 }
+
+.tags {
+    display: flex;
+    gap: 10px;
+}

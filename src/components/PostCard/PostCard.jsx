@@ -10,7 +10,13 @@ function PostCard({post}) {
             </a>
             <p>{post.description}</p>
             <a href={`https://www.dev.to/${post.user.username}`} target="_blank"  rel="noopener noreferrer"><p className="userName">—{post.user.username}</p></a>
-            <p className="tagLine"><span>{post.readable_publish_date}</span> <span>{post.tags}</span></p>
+            <p className="tagLine"><span>{post.readable_publish_date}</span><span className="tags">
+              {post.tag_list.map((tag) => {
+        return (
+          <button key={tag}>{tag}</button>
+        )
+        })}</span>
+              </p>
           </li>
     )
 }
