@@ -9,3 +9,13 @@
     color: var(--color-text-secondary);
     flex-direction: column;
 }
+
+.tagLine {
+        display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0;
+}
+
+.userName {
+    padding-top: 1rem;
+}

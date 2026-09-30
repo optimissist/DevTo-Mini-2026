@@ -4,7 +4,13 @@ import "./PostFeed.css";
 function PostFeed({postList}) {
     return (
       <div>
-        <h2>Dev.to Posts</h2>
+        <p className="topLineCopy">
+          <h2>
+            <a href="https://www.dev.to" target="_blank">Dev.to</a> Posts
+            </h2>
+            <h5>"DEV is a community of software developers getting together to help one another out."</h5>
+            <h6>These are the posts without any frills.</h6>
+            </p>
          <ul>
       {postList.map((post) => {
         return (
