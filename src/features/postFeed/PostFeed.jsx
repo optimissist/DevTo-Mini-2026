@@ -1,7 +1,7 @@
 import PostCard from '../../components/PostCard/PostCard';
 import "./PostFeed.css";
 
-function PostFeed({postList}) {
+function PostFeed({postList, setSavedTags}) {
     return (
       <div>
         <div className="topLineCopy">
@@ -14,7 +14,7 @@ function PostFeed({postList}) {
          <ul>
       {postList.map((post) => {
         return (
-          <PostCard key={post.id} post={post}/>
+          <PostCard key={post.id} post={post} setSavedTags={setSavedTags}/>
         )
         })}
       </ul>

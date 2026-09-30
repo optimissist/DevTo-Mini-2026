@@ -1,8 +1,6 @@
 import "./PostCard.css";
 
-function PostCard({post}) {
-  console.log(typeof post.tags);
-  console.log(post.tag_list);
+function PostCard({post, setSavedTags}) {
     return (
           <li className="post">
             <a href={post.url} target="_blank"  rel="noopener noreferrer">
@@ -13,7 +11,7 @@ function PostCard({post}) {
             <p className="tagLine"><span>{post.readable_publish_date}</span><span className="tags">
               {post.tag_list.map((tag) => {
         return (
-          <button key={tag}>{tag}</button>
+          <button key={tag} onClick={() => setSavedTags(tag)}>{tag}</button>
         )
         })}</span>
               </p>

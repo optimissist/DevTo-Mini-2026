@@ -35,6 +35,7 @@ function App() {
 
       function setSavedTags(tag) {
   dispatch(loadPostList(`/articles/?tag=${tag}`));
+  setSearchTerm(tag)
 }
 
 function setTagToRemove(tag) {
@@ -58,7 +59,7 @@ function sendHome() {
        <div className="body">
       {selectIsLoading && <p className="isLoading">Is Loading...</p>}
       {didFailToLoad && <p className="didFailToLoad">This Failed To Load</p>}
-      {!selectIsLoading && !didFailToLoad && <PostFeed postList={postList} />}
+      {!selectIsLoading && !didFailToLoad && <PostFeed postList={postList} setSavedTags={setSavedTags} />}
       <SavedTags tagList={tagList} setSavedTags={setSavedTags} setTagToRemove={setTagToRemove} sendHome={sendHome}/>
       </div>
     </>
