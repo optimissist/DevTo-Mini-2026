@@ -21,11 +21,13 @@ function App() {
       }
   
       function setSaveTag() {
-          if (isSavedTag) {
-              dispatch(removeTag(searchTerm));
-          } else {
+          if (!isSavedTag && searchTerm !== "") {
           dispatch(saveTag(searchTerm));
           }
+      }
+
+      function clearSearchBar() {
+        setSearchTerm("");
       }
   
             function handleSubmit(e) {
@@ -55,7 +57,7 @@ function sendHome() {
 
   return (
     <>
-      <Header searchTermChange={searchTermChange} setSaveTag={setSaveTag} handleSubmit={handleSubmit} searchTerm={searchTerm} isSavedTag={isSavedTag}/>
+      <Header searchTermChange={searchTermChange} setSaveTag={setSaveTag} handleSubmit={handleSubmit} searchTerm={searchTerm} isSavedTag={isSavedTag} clearSearchBar={clearSearchBar}/>
        <div className="body">
       {selectIsLoading && <p className="isLoading">Is Loading...</p>}
       {didFailToLoad && <p className="didFailToLoad">This Failed To Load</p>}

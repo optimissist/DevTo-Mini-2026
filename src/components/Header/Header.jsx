@@ -2,7 +2,7 @@ import './Header.css';
 
 const headerImage= "https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fthepracticaldev.s3.amazonaws.com%2Fi%2Fjrzutxzs0l43wqvw5k8z.png"
 
-function Header({searchTermChange, setSaveTag, searchTerm, isSavedTag, handleSubmit}) {
+function Header({searchTermChange, setSaveTag, searchTerm, isSavedTag, handleSubmit, clearSearchBar}) {
 
   return (
     <header className="header">
@@ -18,8 +18,11 @@ function Header({searchTermChange, setSaveTag, searchTerm, isSavedTag, handleSub
             value={searchTerm}
             aria-label="Search Posts"
             />
-            <button type="button" onClick={setSaveTag}>
-                {isSavedTag ? "unSave" : "Save"}
+            <button type="button" onClick={setSaveTag} disabled={isSavedTag}>
+                Save
+            </button>
+            <button type="button" onClick={clearSearchBar}>
+                Clear
             </button>
         </form>
     </header>
