@@ -37,7 +37,6 @@ export const devtoSlice = createSlice({
             state.isLoading = false;
             state.posts = action.payload;
             if (action.meta.arg === "/articles") {sessionStorage.setItem('cachedPosts', JSON.stringify(action.payload));}
-            console.log(action)
         })
         .addCase(loadPostList.rejected, (state) => {
             state.failedToLoad = true;
