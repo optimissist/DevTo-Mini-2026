@@ -35,6 +35,7 @@ header span {
 .search {
     display: flex;
     align-items: center;
+    width: 150%;
 }
 
 .search input {

@@ -18,6 +18,9 @@ function Header({searchTermChange, setSaveTag, searchTerm, isSavedTag, handleSub
             value={searchTerm}
             aria-label="Search Posts"
             />
+            <button type="button" onClick={handleSubmit}>
+                Search
+            </button>
             <button type="button" onClick={setSaveTag} disabled={isSavedTag}>
                 Save
             </button>
