@@ -37,7 +37,7 @@ describe('PostCard', () => {
 
     test('links the title to the post', () => {
     renderListing();
-    const link = screen.getByRole('link', { name: "My Post" }); //direction match
+    const link = screen.getByRole('link', { name: "My Post" }); //direct match
     expect(link).toHaveAttribute('href', '/link/for/test/');
   });
 
