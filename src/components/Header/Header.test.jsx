@@ -23,6 +23,7 @@ describe('Header', () => {
         const field = screen.getByRole('textbox', {name: "Search Posts"}) //name = aria-label
         expect(field).toHaveValue('react');
       });
+      
       test('disables save when the tag is saved', () => {
         renderHeader({ isSavedTag: true });
         expect(screen.getByRole('button', { name: 'Save' })).toBeDisabled();
@@ -64,7 +65,7 @@ describe('Header', () => {
   expect(searchTermChange).toHaveBeenCalled();
 });
 
-test('pressing Enter in the field calls onApply', async () => {
+test('pressing Enter in the field calls handleSubmit', async () => {
   const user = userEvent.setup();
   const { handleSubmit } = renderHeader();
   await user.type(screen.getByRole('textbox', { name: 'Search Posts' }), '{Enter}');
