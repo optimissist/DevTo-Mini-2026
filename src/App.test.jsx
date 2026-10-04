@@ -118,7 +118,7 @@ describe ("App", () => {
   });
 
 
-  test('clicking Clear empties the field', async () => {
+  test('clicking Clear empties the field and calls home without calling fetch again', async () => {
     const user = userEvent.setup();
     renderApp();
     await screen.findByText('My Post 1');
@@ -128,6 +128,7 @@ describe ("App", () => {
     await user.click(screen.getByRole('button', { name: 'Clear' }));
 
     expect(field).toHaveValue('');
+    expect(fetch).toHaveBeenLastCalledWith('https://dev.to/api/articles');
   });
 
 

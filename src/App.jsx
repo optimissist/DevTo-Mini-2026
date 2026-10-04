@@ -28,6 +28,7 @@ function App() {
 
       function clearSearchBar() {
         setSearchTerm("");
+        dispatch(loadPostList('/articles'));
       }
   
             function handleSubmit(e) {
